@@ -1,0 +1,27 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: security-demo
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: kun032713
+    url: jdbc:mysql://localhost:3306/springsecurity?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+#  jpa:
+#    show-sql: true #开发阶段,打印要执行的sql语句.
+#    hibernate:
+#      ddl-auto: update
+
+#日志等级的设置
+logging:
+  level:
+    root: info
+  #com.syc.security.Test: error
+
+
+

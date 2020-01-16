@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Spring Security之博客系统</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+</head>
+<body>
+
+<h1>Hello,Spring Security</h1>
+<p>这个界面没有受保护，你可以进已被保护的界面.</p>
+
+<!--sec:authorize,进行授权;isAuthenticated(),判断是否经过了认证-->
+<!--只有登陆认证后的用户才能看到div中的信息-->
+
+<!--th:fragment，th:include,th:substituteby:fragment为片段标记，
+指定一个模板内一部分代码为一个片段，
+然后在其它的页面中用th:include或th:substituteby进行包含。-->
+<div th:fragment="logout" sec:authorize="isAuthenticated()">
+    登录用户: <span sec:authentication="name"></span> |
+    用户角色: <span sec:authentication="principal.authorities"></span>
+    <hr/>
+    <div>
+        <form action="#" th:action="@{/logout}" method="post">
+            <input type="submit" value="退出" />
+        </form>
+    </div>
+</div>
+
+<!--里面的内容无论登陆与否都可以看到-->
+<ul>
+    <li>点击<a href="/user/info" th:href="@{/user/info}">去/user/user.html保护的界面</a></li>
+</ul>
+</body>
+</html>
